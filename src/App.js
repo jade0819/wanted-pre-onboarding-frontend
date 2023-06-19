@@ -1,9 +1,9 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import TodoList from "./pages/TodoList";
-import SignIn from "./pages/SignIn";
-import SignUp from "./pages/SignUp";
-import NotFound from "./pages/NotFound";
+import TodoList from "./pages/Todo/TodoList";
+import SignIn from "./pages/Signin/SignIn";
+import SignUp from "./pages/Signup/SignUp";
+import NotFound from "./pages/NotFound/NotFound";
 
 export default function App() {
   return (
