@@ -1,4 +1,5 @@
 import React from "react";
+import { useAuthContext } from "../../context/AuthContext";
 import useInput from "../../hooks/useInput";
 import Form from "../../components/Form";
 import { signin } from "../../apis/AuthApi";
@@ -7,6 +8,7 @@ import InputEmail from "../../components/InputEmail";
 import InputPassword from "../../components/InputPassword";
 
 export default function SignIn() {
+  const { setToken } = useAuthContext();
   const [values, onChange] = useInput({
     email: "",
     password: "",
@@ -22,7 +24,10 @@ export default function SignIn() {
 
     console.log(values);
     signin(values)
-      .then((res) => console.log(res.accessToken))
+      .then((res) => {
+        console.log(res.accessToken);
+        setToken(res.accessToken);
+      })
       .catch((error) => alert(error.message));
   };
 

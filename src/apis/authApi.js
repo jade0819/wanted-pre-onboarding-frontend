@@ -2,7 +2,6 @@ import axios from "axios";
 
 const apiClient = axios.create({
   baseURL: "https://www.pre-onboarding-selection-task.shop/",
-  // baseURL: "http://localhost:8000",
   headers: {
     "Content-Type": "application/json",
   },
