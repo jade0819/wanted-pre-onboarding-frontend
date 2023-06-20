@@ -35,15 +35,16 @@ export default function TodoList({ todos, getTodos }) {
 
   return (
     <ul className="h-[430px] mt-3 p-4 border border-black overflow-y-scroll">
-      {todos.map((item) => (
-        <Todo
-          key={item.id}
-          item={item}
-          handleToggle={handleToggle}
-          handleUpdate={handleUpdate}
-          handleDelete={handleDelete}
-        />
-      ))}
+      {todos.length > 0 &&
+        todos.map((item) => (
+          <Todo
+            key={item.id}
+            item={item}
+            handleToggle={handleToggle}
+            handleUpdate={handleUpdate}
+            handleDelete={handleDelete}
+          />
+        ))}
     </ul>
   );
 }
