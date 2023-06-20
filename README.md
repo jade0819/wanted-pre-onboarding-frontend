@@ -23,6 +23,7 @@
 ## 미리보기
 
 - 로그인/회원가입
+
 https://github.com/jade0819/wanted-pre-onboarding-frontend/assets/88275787/6eea3b4a-30c3-4224-b4c6-39ebb15da822
 
 - TODO LIST
