@@ -21,22 +21,15 @@
   ```
 
 ## 미리보기
-
-- 로그인/회원가입
+### 로그인/회원가입
 
 https://github.com/jade0819/wanted-pre-onboarding-frontend/assets/88275787/6eea3b4a-30c3-4224-b4c6-39ebb15da822
 
-- TODO LIST
+### TODO LIST
 
 https://github.com/jade0819/wanted-pre-onboarding-frontend/assets/88275787/033278cd-0d53-4d02-a6a2-28cb531e5488
 
-
-
-### 로그인/회원가입
-
-### TODO LIST
-
-## 구현 기능 및 프로젝트 구조
+## 구현 기능 및 프로젝트 폴더 구조
 
 ### 구현 기능
 
