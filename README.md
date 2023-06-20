@@ -10,7 +10,7 @@
 
 ## 프로젝트 실행 방법
 
-- 배포 사이트 : `https://endearing-truffle-bc0801.netlify.app/`
+- 배포 사이트 : `https://64920a63bb61d6286422f1b6--charming-boba-7e6531.netlify.app/`
 
 - 로컬
 
@@ -21,6 +21,7 @@
   ```
 
 ## 미리보기
+
 ### 로그인/회원가입
 
 https://github.com/jade0819/wanted-pre-onboarding-frontend/assets/88275787/6eea3b4a-30c3-4224-b4c6-39ebb15da822
