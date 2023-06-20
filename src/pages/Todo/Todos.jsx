@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { getTodos as fetchGetTodos } from "../../apis/todoApi";
 import { useAuthContext } from "../../context/AuthContext";
-import TodoList from "../../components/TodoList";
-import AddTodo from "../../components/AddTodo";
+import TodoList from "../../components/Todo/TodoList";
+import AddTodo from "../../components/Todo/AddTodo";
 
 export default function Todos() {
   const [todos, setTodos] = useState([]);

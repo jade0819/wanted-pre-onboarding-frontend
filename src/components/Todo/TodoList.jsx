@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import Todo from "./Todo";
-import { useAuthContext } from "../context/AuthContext";
-import { updateTodo, deleteTodo } from "../apis/todoApi";
+import { useAuthContext } from "../../context/AuthContext";
+import { updateTodo, deleteTodo } from "../../apis/todoApi";
 
 export default function TodoList({ todos, getTodos }) {
   const { accessToken: token } = useAuthContext();
