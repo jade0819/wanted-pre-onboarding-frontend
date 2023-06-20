@@ -10,7 +10,7 @@
 
 ## 프로젝트 실행 방법
 
-- 배포 사이트 : `https://64920a63bb61d6286422f1b6--charming-boba-7e6531.netlify.app/`
+- 배포 사이트 : `https://64920b73964eae0008481001--charming-boba-7e6531.netlify.app/`
 
 - 로컬
 
