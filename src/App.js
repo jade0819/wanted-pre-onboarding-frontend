@@ -3,7 +3,7 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { AuthContextProvider } from "./context/AuthContext";
 import PublicRoute from "./pages/ProtectedRoute/PublicRoute";
 import PrivateRoute from "./pages/ProtectedRoute/PrivateRoute";
-import TodoList from "./pages/Todo/TodoList";
+import Todos from "./pages/Todo/Todos";
 import SignIn from "./pages/Signin/SignIn";
 import SignUp from "./pages/Signup/SignUp";
 import NotFound from "./pages/NotFound/NotFound";
@@ -19,7 +19,7 @@ export default function App() {
           </Route>
           <Route element={<PrivateRoute />}>
             <Route path="/" element={<Navigate replace to="/todo" />} />
-            <Route path="/todo" element={<TodoList />} />
+            <Route path="/todo" element={<Todos />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>

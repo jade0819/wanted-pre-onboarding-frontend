@@ -2,7 +2,7 @@ import React from "react";
 import useInput from "../../hooks/useInput";
 import { useNavigate } from "react-router-dom";
 import Form from "../../components/Form";
-import { signup } from "../../apis/AuthApi";
+import { signup } from "../../apis/authApi";
 import { isValidatieCheck } from "../../utils/validation";
 import InputEmail from "../../components/InputEmail";
 import InputPassword from "../../components/InputPassword";
@@ -18,15 +18,11 @@ export default function SignUp() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("회원가입!");
 
     if (!values) return;
 
-    console.log(values);
     signup(values)
-      .then((res) => {
-        navigate("/signin");
-      })
+      .then((res) => navigate("/signin"))
       .catch((error) => alert(error.message));
   };
 

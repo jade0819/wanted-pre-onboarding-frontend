@@ -13,7 +13,7 @@ export default function Form({
       {children}
       <div className="flex justify-between items-center">
         <button
-          className="bg-black text-white p-2 rounded-md disabled:bg-gray-400"
+          className="disabled:bg-gray-400"
           type="submit"
           disabled={isButtonDisabled}
           data-testid={type === "signin" ? "signin-button" : "signup-button"}

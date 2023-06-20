@@ -8,7 +8,10 @@ const AuthContext = createContext();
 export function AuthContextProvider({ children }) {
   const navigate = useNavigate();
 
-  const accessToken = localStorage.getItem(ACCESS_TOKEN);
+  const accessToken =
+    localStorage.getItem(ACCESS_TOKEN) === ""
+      ? null
+      : localStorage.getItem(ACCESS_TOKEN);
 
   const setToken = useCallback(
     (accessToken) => {
