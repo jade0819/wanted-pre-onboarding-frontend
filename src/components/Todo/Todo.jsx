@@ -41,15 +41,27 @@ export default function Todo({
     <>
       {item.id !== editTodoId ? (
         <li className="flex justify-between gap-2 p-2">
-          <input
-            type="checkbox"
-            checked={editTodo.isCompleted}
-            onChange={handleChangeCheckbox}
-          />
-          <div className="flex items-center w-full px-2">{item.todo}</div>
-          <div className="flex flex-1 min-w-[100px]">
-            <button onClick={() => setEditTodoId(item.id)}>수정</button>
-            <button className="ml-1" onClick={() => handleDelete(item.id)}>
+          <label className="flex w-full">
+            <input
+              className="cursor-pointer"
+              type="checkbox"
+              checked={editTodo.isCompleted}
+              onChange={handleChangeCheckbox}
+            />
+            <span className="flex items-center w-full px-2">{item.todo}</span>
+          </label>
+          <div className="flex min-w-[100px]">
+            <button
+              onClick={() => setEditTodoId(item.id)}
+              data-testid="modify-button"
+            >
+              수정
+            </button>
+            <button
+              className="ml-1"
+              onClick={() => handleDelete(item.id)}
+              data-testid="delete-button"
+            >
               삭제
             </button>
           </div>
@@ -67,12 +79,19 @@ export default function Todo({
             value={editTodo.todo}
             onChange={handleChangeInput}
             placeholder="할 일을 입력해주세요."
+            data-testid="modify-input"
           />
           <div className="flex flex-1 min-w-[100px]">
-            <button className="mr-1" onClick={handleSubmit}>
+            <button
+              className="mr-1"
+              onClick={handleSubmit}
+              data-testid="submit-button"
+            >
               제출
             </button>
-            <button onClick={handleCancel}>취소</button>
+            <button onClick={handleCancel} data-testid="cancel-button">
+              취소
+            </button>
           </div>
         </li>
       )}
