@@ -32,7 +32,6 @@ export default function SignUp() {
       <Form
         type={"signup"}
         handleSubmit={handleSubmit}
-        buttonTitle={"회원가입"}
         isButtonDisabled={isButtonDisabled}
       >
         <InputEmail value={values.email} onChange={onChange} />

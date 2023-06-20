@@ -15,7 +15,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  @apply w-full max-w-screen-2xl;
+  @apply w-full;
 }
 
 #root {
