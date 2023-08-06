@@ -1,15 +1,20 @@
 import React, { useState } from "react";
 import { signin } from "../../apis/authApi";
 import { Link } from "react-router-dom";
+import { isValidatieCheck } from "../../utils/validation";
 
 export default function SignInPage() {
   const [values, setValues] = useState({
     email: "",
     password: "",
   });
+
+  const isButtonDisabled = !isValidatieCheck(values);
+
   const handleChange = (e) => {
     setValues({ ...values, [e.target.id]: e.target.value });
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -43,7 +48,13 @@ export default function SignInPage() {
           />
         </div>
         <div className="flex justify-between items-center">
-          <button type="submit">로그인</button>
+          <button
+            className="disabled:bg-gray-400"
+            type="submit"
+            disabled={isButtonDisabled}
+          >
+            로그인
+          </button>
           <Link to="/signup">회원가입하기</Link>
         </div>
       </form>

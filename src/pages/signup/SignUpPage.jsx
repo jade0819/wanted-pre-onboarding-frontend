@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { signup } from "../../apis/authApi";
+import { isValidatieCheck } from "../../utils/validation";
 
 export default function SignUpPage() {
   const [values, setValues] = useState({
     email: "",
     password: "",
   });
+
+  const isButtonDisabled = !isValidatieCheck(values);
 
   const navigate = useNavigate();
 
@@ -17,6 +20,8 @@ export default function SignUpPage() {
     e.preventDefault();
 
     if (!values) return;
+
+    if (!isValidatieCheck(values)) return;
 
     signup(values)
       .then((res) => navigate("/signin"))
@@ -46,7 +51,13 @@ export default function SignUpPage() {
           />
         </div>
         <div className="flex justify-between items-center">
-          <button type="submit">회원가입</button>
+          <button
+            className="disabled:bg-gray-400"
+            type="submit"
+            disabled={isButtonDisabled}
+          >
+            회원가입
+          </button>
           <Link to="/signin">로그인하기</Link>
         </div>
       </form>
