@@ -16,6 +16,7 @@
 
   ```shell
   > git clone https://github.com/jade0819/wanted-pre-onboarding-frontend.git
+  > cd wanted-pre-onboarding-frontend
   > npm install
   > npm start
   ```
