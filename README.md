@@ -10,7 +10,7 @@
 
 ## 프로젝트 실행 방법
 
-- 배포 사이트 : [https://64cfa46a8bc4d0533d6513df--stunning-bienenstitch-bc1419.netlify.app/](https://64cfa46a8bc4d0533d6513df--stunning-bienenstitch-bc1419.netlify.app/)
+- 배포 사이트 : [https://stunning-bienenstitch-bc1419.netlify.app/](https://stunning-bienenstitch-bc1419.netlify.app/)
 
 - 로컬
 
