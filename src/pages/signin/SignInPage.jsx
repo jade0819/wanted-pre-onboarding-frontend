@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import useInput from "../../hooks/useInput";
 import { isValidatieCheck } from "../../utils/validation";
 import { signin } from "../../apis/authApi";
-import InputEmail from "../../components/InputEmail";
-import InputPassword from "../../components/InputPassword";
+import InputEmail from "../../components/auth/InputEmail";
+import InputPassword from "../../components/auth/InputPassword";
 
 export default function SignInPage() {
   const { setToken } = useAuthContext();
