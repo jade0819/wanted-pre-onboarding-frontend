@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { signup } from "../../apis/authApi";
+import useInput from "../../hooks/useInput";
 import { isValidatieCheck } from "../../utils/validation";
+import { signup } from "../../apis/authApi";
+import InputEmail from "../../components/InputEmail";
+import InputPassword from "../../components/InputPassword";
+import Button from "../../components/Button";
 
 export default function SignUpPage() {
-  const [values, setValues] = useState({
+  const [values, onChange] = useInput({
     email: "",
     password: "",
   });
@@ -13,9 +17,6 @@ export default function SignUpPage() {
 
   const navigate = useNavigate();
 
-  const handleChange = (e) => {
-    setValues({ ...values, [e.target.id]: e.target.value });
-  };
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -32,32 +33,10 @@ export default function SignUpPage() {
     <div className="w-full max-w-lg">
       <div className="text-3xl font-semibold text-center mb-6">회원가입</div>
       <form className="p-1" onSubmit={handleSubmit}>
-        <div className="mb-5">
-          <label>이메일</label>
-          <input
-            id="email"
-            type="email"
-            value={values.email}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="mb-5">
-          <label>패스워드</label>
-          <input
-            id="password"
-            type="password"
-            value={values.password}
-            onChange={handleChange}
-          />
-        </div>
+        <InputEmail value={values.email} onChange={onChange} />
+        <InputPassword value={values.password} onChange={onChange} />
         <div className="flex justify-between items-center">
-          <button
-            className="disabled:bg-gray-400"
-            type="submit"
-            disabled={isButtonDisabled}
-          >
-            회원가입
-          </button>
+          <Button title={"회원가입"} onDisabled={isButtonDisabled} />
           <Link to="/signin">로그인하기</Link>
         </div>
       </form>
