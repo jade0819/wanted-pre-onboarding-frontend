@@ -14,9 +14,7 @@ export async function signin(params) {
       return { accessToken: res.data.access_token };
     })
     .catch((error) => {
-      console.log("signin-error: ", error);
       const status = error.response?.status;
-      console.log("signin-status: ", status);
       let msg = "";
 
       if (status === 401) {
@@ -29,7 +27,6 @@ export async function signin(params) {
         msg = `알 수 없는 오류가 발생했습니다. (에러코드(${status})`;
       }
 
-      console.error(msg);
       throw new Error(msg);
     });
 }
@@ -40,7 +37,6 @@ export async function signup(params) {
     .then((res) => res.data)
     .catch((error) => {
       const status = error.response?.status;
-      console.log("signup-status: ", status);
       let msg = "";
 
       if (status === 400) {
@@ -49,7 +45,6 @@ export async function signup(params) {
         msg = `알 수 없는 오류가 발생했습니다. (에러코드(${status})`;
       }
 
-      console.error(msg);
       throw new Error(msg);
     });
 }

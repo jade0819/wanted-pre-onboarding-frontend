@@ -44,7 +44,7 @@ export default function SignInPage() {
         </div>
         <div className="flex justify-between items-center">
           <button type="submit">로그인</button>
-          <Link to="/signin">로그인하기</Link>
+          <Link to="/signup">회원가입하기</Link>
         </div>
       </form>
     </div>
