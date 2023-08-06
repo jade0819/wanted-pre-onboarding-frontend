@@ -15,7 +15,6 @@ export default function Todos() {
     if (token) {
       fetchGetTodos(token).then((data) => {
         setTodos(data);
-        console.log(data);
       });
     }
   }, [token]);

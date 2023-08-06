@@ -23,7 +23,7 @@ export default function AddTodo({ getTodos }) {
   return (
     <form className="flex w-full mb-2" onSubmit={handleSubmit}>
       <input
-        className="flex-1 mr-1"
+        className="flex-1 mr-1 border rounded-md"
         type="text"
         placeholder="오늘의 할 일을 작성해보세요."
         data-testid="new-todo-input"
