@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { useAuthContext } from "../../context/AuthContext";
 import { getTodos as fetchGetTodos } from "../../apis/todoApi";
 import TodoList from "../../components/todo/TodoList";
+import AddTodo from "../../components/todo/AddTodo";
 
 export default function Todos() {
   const [todos, setTodos] = useState([]);
@@ -29,7 +30,8 @@ export default function Todos() {
         <button onClick={removeToken}>로그아웃</button>
       </div>
 
-      <div className="w-full h-[520px] p-4 bg-white">
+      <div className="flex flex-col w-full h-[520px] p-4 bg-white">
+        <AddTodo getTodos={getTodos} />
         <TodoList todos={todos} getTodos={getTodos} />
       </div>
     </div>
