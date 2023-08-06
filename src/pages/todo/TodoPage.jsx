@@ -1,5 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useAuthContext } from "../../context/AuthContext";
+import { getTodos as fetchGetTodos } from "../../apis/todoApi";
+import TodoList from "../../components/todo/TodoList";
 
 export default function Todos() {
   const [todos, setTodos] = useState([]);
@@ -8,13 +10,12 @@ export default function Todos() {
 
   const { removeToken } = useAuthContext();
 
-  const handleClick = () => {
-    removeToken();
-  };
-
   const getTodos = useCallback(() => {
     if (token) {
-      setTodos("성공!!!!");
+      fetchGetTodos(token).then((data) => {
+        setTodos(data);
+        console.log(data);
+      });
     }
   }, [token]);
 
@@ -25,10 +26,12 @@ export default function Todos() {
   return (
     <div className="w-full max-w-[600px] justify-center px-1">
       <div className="text-right mb-1">
-        <button onClick={handleClick}>로그아웃</button>
+        <button onClick={removeToken}>로그아웃</button>
       </div>
 
-      <div className="w-full h-[520px] p-4 bg-white">{todos}</div>
+      <div className="w-full h-[520px] p-4 bg-white">
+        <TodoList todos={todos} getTodos={getTodos} />
+      </div>
     </div>
   );
 }
