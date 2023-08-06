@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { useAuthContext } from "../../context/AuthContext";
 import { signin } from "../../apis/authApi";
 import { Link } from "react-router-dom";
 import { isValidatieCheck } from "../../utils/validation";
 
 export default function SignInPage() {
+  const { setToken } = useAuthContext();
   const [values, setValues] = useState({
     email: "",
     password: "",
@@ -21,7 +23,7 @@ export default function SignInPage() {
     if (!values) return;
 
     signin(values)
-      .then((res) => console.log(res.accessToken))
+      .then((res) => setToken(res.accessToken))
       .catch((error) => alert(error.message));
   };
 
