@@ -7,7 +7,7 @@ export default function InputEmail({ value, onChange }) {
       <input
         className="w-full mt-1 p-3 rounded-md border border-gray-300 outline-none"
         id="email"
-        type="text"
+        type="email"
         value={value}
         onChange={onChange}
         data-testid="email-input"
