@@ -6,7 +6,6 @@ import { isValidatieCheck } from "../../utils/validation";
 import { signin } from "../../apis/authApi";
 import InputEmail from "../../components/InputEmail";
 import InputPassword from "../../components/InputPassword";
-import Button from "../../components/Button";
 
 export default function SignInPage() {
   const { setToken } = useAuthContext();
@@ -34,7 +33,14 @@ export default function SignInPage() {
         <InputEmail value={values.email} onChange={onChange} />
         <InputPassword value={values.password} onChange={onChange} />
         <div className="flex justify-between items-center">
-          <Button title={"로그인"} onDisabled={isButtonDisabled} />
+          <button
+            className="disabled:bg-gray-400"
+            type="submit"
+            disabled={isButtonDisabled}
+            data-testid="signin-button"
+          >
+            로그인
+          </button>
           <Link to="/signup">회원가입하기</Link>
         </div>
       </form>
