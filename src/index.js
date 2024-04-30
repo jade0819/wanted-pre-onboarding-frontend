@@ -13,6 +13,17 @@ const httpClient = new HttpClient(
   storage
 );
 
+httpClient.fetch("/auth/signin", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  data: {
+    email: "break0819@naver.com",
+    password: "12345678",
+  },
+});
+
 root.render(
   <React.StrictMode>
     <App />

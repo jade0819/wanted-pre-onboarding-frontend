@@ -28,7 +28,7 @@ export class HttpClient {
   #addAuthInterceptor(instance) {
     instance.interceptors.request.use(
       (config) => {
-        const token = "access_token";
+        const token = this.#storage.get();
 
         if (token) config.headers.Authorization = `Bearer ${token}`;
 
