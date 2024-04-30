@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App";
 import { HttpClient } from "./apis/httpClient";
 import { LocalStorage } from "./storage/localStorage";
+import { AuthService } from "./service/AuthService";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -12,17 +13,7 @@ const httpClient = new HttpClient(
   "https://www.pre-onboarding-selection-task.store",
   storage
 );
-
-httpClient.fetch("/auth/signin", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-  },
-  data: {
-    email: "break0819@naver.com",
-    password: "12345678",
-  },
-});
+const authService = new AuthService(httpClient, storage);
 
 root.render(
   <React.StrictMode>
