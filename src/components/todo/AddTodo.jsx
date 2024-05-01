@@ -1,9 +1,8 @@
 import React, { useCallback } from "react";
 import { createTodo } from "../../apis/todoApi";
-import { useAuthContext } from "../../context/AuthContext";
 
 export default function AddTodo({ getTodos }) {
-  const { accessToken: token } = useAuthContext();
+  const token = "access_token";
 
   const handleSubmit = useCallback(
     (e) => {

@@ -1,15 +1,14 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { useAuthContext } from "../../context/AuthContext";
+import { useAuth } from "../../context/AuthContext";
 import { getTodos as fetchGetTodos } from "../../apis/todoApi";
 import TodoList from "../../components/todo/TodoList";
 import AddTodo from "../../components/todo/AddTodo";
 
 export default function Todos() {
   const [todos, setTodos] = useState([]);
+  const token = "access_token";
 
-  const { accessToken: token } = useAuthContext();
-
-  const { removeToken } = useAuthContext();
+  const { removeToken } = useAuth();
 
   const getTodos = useCallback(() => {
     if (token) {

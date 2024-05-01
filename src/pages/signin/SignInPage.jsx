@@ -1,14 +1,11 @@
 import React from "react";
-import { useAuthContext } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
 import useInput from "../../hooks/useInput";
 import { isValidatieCheck } from "../../utils/validation";
-import { signin } from "../../apis/authApi";
 import InputEmail from "../../components/auth/InputEmail";
 import InputPassword from "../../components/auth/InputPassword";
 
 export default function SignInPage() {
-  const { setToken } = useAuthContext();
   const [values, onChange] = useInput({
     email: "",
     password: "",
@@ -16,15 +13,7 @@ export default function SignInPage() {
 
   const isButtonDisabled = !isValidatieCheck(values);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (!values) return;
-
-    signin(values)
-      .then((res) => setToken(res.accessToken))
-      .catch((error) => alert(error.message));
-  };
+  const handleSubmit = (e) => {};
 
   return (
     <div className="w-full max-w-lg">
