@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { compareObject } from "../../utils/compare";
+import { compareObject } from "../../utils/common";
 
 export default function Todo({
   item,

@@ -1,11 +1,12 @@
 import React from "react";
 import { useAuth } from "../../context/AuthContext";
 import { Navigate, Outlet } from "react-router";
+import { PATH_NAME } from "../../constants/routes";
 
 export default function PrivateRoute() {
-  const { isToken } = useAuth();
+  const { isLogin } = useAuth();
 
-  if (!isToken) return <Navigate to="/signin" />;
+  if (!isLogin()) return <Navigate to={PATH_NAME.SIGNIN} />;
 
   return <Outlet />;
 }

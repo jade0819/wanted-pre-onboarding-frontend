@@ -4,14 +4,14 @@ const AuthContext = createContext(null);
 
 export const useAuth = () => useContext(AuthContext);
 
-export function AuthProvider({ children, authService, storage }) {
+export function AuthProvider({ children, authService }) {
   const signin = authService.signin.bind(authService);
   const signup = authService.signup.bind(authService);
   const logout = authService.logout.bind(authService);
-  const isToken = storage.get();
+  const isLogin = authService.isLogin.bind(authService);
 
   return (
-    <AuthContext.Provider value={{ signin, signup, logout, isToken }}>
+    <AuthContext.Provider value={{ signin, signup, logout, isLogin }}>
       {children}
     </AuthContext.Provider>
   );

@@ -20,7 +20,7 @@ const authService = new AuthService(httpClient, storage);
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <AuthProvider authService={authService} storage={storage}>
+      <AuthProvider authService={authService}>
         <App />
       </AuthProvider>
     </BrowserRouter>
