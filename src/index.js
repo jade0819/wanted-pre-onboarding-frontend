@@ -7,6 +7,8 @@ import { HttpClient } from "./apis/httpClient";
 import { LocalStorage } from "./storage/localStorage";
 import { AuthService } from "./service/AuthService";
 import { AuthProvider } from "./context/AuthContext";
+import { TodoService } from "./service/TodoService";
+import { TodoProvider } from "./context/TodoContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -16,12 +18,15 @@ const httpClient = new HttpClient(
   storage
 );
 const authService = new AuthService(httpClient, storage);
+const todoService = new TodoService(httpClient);
 
 root.render(
   <React.StrictMode>
     <BrowserRouter>
       <AuthProvider authService={authService}>
-        <App />
+        <TodoProvider todoService={todoService}>
+          <App />
+        </TodoProvider>
       </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>
