@@ -21,13 +21,20 @@ const authService = new AuthService(httpClient, storage);
 const todoService = new TodoService(httpClient);
 
 root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <AuthProvider authService={authService}>
-        <TodoProvider todoService={todoService}>
-          <App />
-        </TodoProvider>
-      </AuthProvider>
-    </BrowserRouter>
-  </React.StrictMode>
+  // <React.StrictMode>
+  //   <BrowserRouter>
+  //     <AuthProvider authService={authService}>
+  //       <TodoProvider todoService={todoService}>
+  //         <App />
+  //       </TodoProvider>
+  //     </AuthProvider>
+  //   </BrowserRouter>
+  // </React.StrictMode>
+  <BrowserRouter>
+    <AuthProvider authService={authService}>
+      <TodoProvider todoService={todoService}>
+        <App />
+      </TodoProvider>
+    </AuthProvider>
+  </BrowserRouter>
 );

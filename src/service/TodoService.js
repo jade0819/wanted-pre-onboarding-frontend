@@ -20,10 +20,12 @@ export class TodoService {
       headers: {
         "Content-Type": "application/json",
       },
-      data: newTodo,
+      data: {
+        todo: newTodo,
+      },
     });
 
-    return response;
+    return response.data;
   }
 
   async update(todoId, newTodo, isCompleted) {
@@ -38,7 +40,7 @@ export class TodoService {
       },
     });
 
-    return response;
+    return response.data;
   }
 
   async delete(todoId) {
