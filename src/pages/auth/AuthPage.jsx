@@ -2,12 +2,12 @@ import React from "react";
 import { useAuth } from "../../context/AuthContext";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useUserInputs from "../../hooks/auth/useUserInputs";
-import { PATH_NAME } from "../../constants/routes";
 import Inputs from "../../components/auth/Inputs";
+import { PATH_NAME } from "../../constants/routes";
 
 export default function AuthPage() {
   const { pathname } = useLocation();
-  const { SIGNIN, SIGNUP, TODOS } = PATH_NAME;
+  const { SIGNIN, SIGNUP } = PATH_NAME;
   const isSigninPath = pathname === SIGNIN;
 
   const { userInputs, isValidCheck, saveUserInputs } = useUserInputs();
