@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
-import { HttpClient } from "./apis/httpClient";
+import { HttpClient } from "./httpClient/httpClient";
 import { LocalStorage } from "./storage/localStorage";
 import { AuthService } from "./service/AuthService";
 import { AuthProvider } from "./context/AuthContext";
