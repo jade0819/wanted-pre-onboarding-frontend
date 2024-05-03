@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useAuth } from "../../context/AuthContext";
 import AddTodo from "../../components/todo/AddTodo";
 import { useNavigate } from "react-router-dom";
@@ -15,10 +15,6 @@ export default function Todos() {
     logout();
     navigate(PATH_NAME.SIGNIN);
   };
-
-  useEffect(() => {
-    console.log("Todos!!");
-  });
 
   return (
     <div className="w-full max-w-[600px] justify-center px-1">

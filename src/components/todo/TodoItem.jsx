@@ -2,10 +2,6 @@ import React, { useState } from "react";
 import useUserInput from "../../hooks/todo/useUserInput";
 import { useTodo } from "../../context/TodoContext";
 
-function areEqual(prevProps, nextProps) {
-  return prevProps.todo === nextProps.todo;
-}
-
 function TodoItem({ id, todo, isCompleted }) {
   const [isEditMode, setIsEditMode] = useState(false);
 
@@ -79,5 +75,3 @@ function TodoItem({ id, todo, isCompleted }) {
 }
 
 export default TodoItem;
-// export default React.memo(TodoItem);
-// export default React.memo(TodoItem, areEqual);
