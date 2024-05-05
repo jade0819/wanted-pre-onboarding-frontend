@@ -7,7 +7,6 @@ import { LocalStorage } from "./storage/localStorage";
 import { AuthService } from "./service/AuthService";
 import { TodoService } from "./service/TodoService";
 import { AuthProvider } from "./context/AuthContext";
-import { TodoProvider } from "./context/TodoContext";
 import App from "./App";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
