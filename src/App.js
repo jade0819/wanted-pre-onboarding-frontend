@@ -1,14 +1,22 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import AuthPage from "./pages/auth/AuthPage";
-import NotFoundPage from "./pages/notfound/NotFoundPage";
-import TodoPage from "./pages/todo/TodoPage";
+import { TodoProvider } from "./context/TodoContext";
+import withProvider from "./hocs/withProvider";
 import PublicRoute from "./pages/redirect/PublicRoute";
 import PrivateRoute from "./pages/redirect/PrivateRoute";
+import AuthPage from "./pages/auth/AuthPage";
+import TodoPage from "./pages/todo/TodoPage";
+import NotFoundPage from "./pages/notfound/NotFoundPage";
 import { PATH_NAME } from "./constants/routes";
 
-export default function App() {
+export default function App({ todoService }) {
   const { SIGNIN, SIGNUP, TODOS } = PATH_NAME;
+
+  const TodoPageWithTodoProvider = withProvider(
+    TodoProvider,
+    { todoService: todoService },
+    TodoPage
+  );
 
   return (
     <Routes>
@@ -18,7 +26,7 @@ export default function App() {
       </Route>
       <Route element={<PrivateRoute />}>
         <Route path="/" element={<Navigate replace to={TODOS} />} />
-        <Route path={TODOS} element={<TodoPage />} />
+        <Route path={TODOS} element={<TodoPageWithTodoProvider />} />
       </Route>
       <Route path="*" element={<NotFoundPage />} />
     </Routes>

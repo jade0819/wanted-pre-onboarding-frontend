@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import useUserInput from "../../hooks/todo/useUserInput";
 import { useTodo } from "../../context/TodoContext";
 
-function TodoItem({ id, todo, isCompleted }) {
+export default function TodoItem({ id, todo, isCompleted }) {
   const [isEditMode, setIsEditMode] = useState(false);
 
   const { userInput, saveUserInput, cancelUserInput } = useUserInput(todo);
@@ -73,5 +73,3 @@ function TodoItem({ id, todo, isCompleted }) {
     </li>
   );
 }
-
-export default TodoItem;

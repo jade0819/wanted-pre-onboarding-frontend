@@ -20,10 +20,17 @@ export default function AuthPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const msg = "아이디와 비밀번호를 확인해주세요";
+
     if (pathname === PATH_NAME.SIGNIN) {
-      signin(email, password, navigate);
+      signin(email, password, navigate)
+        .then(() => navigate(PATH_NAME.TODOS))
+        .catch(() => alert(msg));
     } else {
-      signup(email, password, navigate);
+      signup(email, password, navigate)
+        .then(() => navigate(PATH_NAME.SIGNIN))
+        .catch(() => alert(msg));
+      alert("회원가입 완료!");
     }
   };
 

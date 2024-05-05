@@ -10,7 +10,10 @@ export class TodoService {
   }
 
   async get() {
-    const response = await this.httpClient.fetch("/todos", { method: "get" });
+    const response = await this.httpClient.fetch("/todos", {
+      method: "get",
+    });
+
     return response.data;
   }
 
