@@ -1,6 +1,6 @@
 import React from "react";
-import { useAuth } from "../../context/AuthContext";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 import useUserInputs from "../../hooks/auth/useUserInputs";
 import Inputs from "../../components/auth/Inputs";
 import { PATH_NAME } from "../../constants/routes";

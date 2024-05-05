@@ -5,7 +5,6 @@ import {
   useEffect,
   useState,
 } from "react";
-import { useAuth } from "./AuthContext";
 
 const TodoContext = createContext(null);
 
@@ -15,16 +14,12 @@ export function TodoProvider({ children, todoService }) {
   const [todos, setTodos] = useState([]);
   const [error, setError] = useState(false);
 
-  const { isLogin } = useAuth();
-
   useEffect(() => {
-    if (isLogin()) {
-      todoService
-        .get()
-        .then((todos) => setTodos(todos))
-        .catch(() => setError(true));
-    }
-  }, [isLogin, todoService, setTodos]);
+    todoService
+      .get()
+      .then((todos) => setTodos(todos))
+      .catch(() => setError(true));
+  }, [todoService, setTodos]);
 
   const createTodo = useCallback(
     (newTodo) => {

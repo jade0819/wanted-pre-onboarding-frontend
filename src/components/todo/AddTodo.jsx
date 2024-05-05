@@ -1,7 +1,7 @@
-import React, { memo, useState } from "react";
+import React, { useState } from "react";
 import { useTodo } from "../../context/TodoContext";
 
-const AddTodo = memo(function AddTodo() {
+function AddTodo() {
   const [newTodo, setNewTodo] = useState("");
 
   const saveUserInput = (e) => setNewTodo(e.target.value);
@@ -32,6 +32,6 @@ const AddTodo = memo(function AddTodo() {
       </button>
     </form>
   );
-});
+}
 
 export default AddTodo;
