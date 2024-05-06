@@ -2,10 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  /* color */
+  --color-primary: #282851;
+  --color-secondary: #3e3e5a;
+  --color-tertiary: #44446b;
+  --color-grey: #a1a0a0;
+
+  /* width */
+  --width-container: 580px;
+  --width-button: 40px;
+
+  /* height */
+  --height-container: 500px;
+  --height-nav: 70px;
+  --height-todo-list: 320px;
+  --height-button: 40px;
+}
+
 * {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--color-tertiary);
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--color-primary);
+    border-radius: 10px;
+  }
 }
 
 body {
@@ -15,11 +47,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  @apply w-full;
 }
 
 #root {
-  @apply h-screen flex justify-center items-center bg-slate-200;
+  @apply h-screen flex flex-col text-text bg-slate-200;
 }
 
 code {
@@ -32,11 +63,40 @@ code {
   input[type="text"],
   input[type="email"],
   input[type="password"] {
-    @apply w-full px-3 py-2 border border-gray-300 rounded-md outline-none;
+    @apply border-none outline-none;
   }
 
-  button,
-  [type="submit"] {
-    @apply p-2 bg-black text-white rounded-md cursor-pointer outline-none;
+  button {
+    @apply cursor-pointer outline-none whitespace-nowrap;
+  }
+
+  ul {
+    padding: 0;
+  }
+}
+
+@layer components {
+  .container {
+    @apply max-w-container w-full mt-24 mx-auto py-5 px-6 bg-primary rounded-md;
+  }
+
+  .title {
+    @apply text-4xl text-center my-9 font-extrabold;
+  }
+
+  .btn {
+    @apply min-w-button h-button flex justify-center items-center p-3 text-sm bg-secondary rounded-md hover:opacity-70;
+  }
+
+  .btn-accent {
+    @apply min-w-button h-button flex justify-center items-center p-3 text-sm bg-secondary rounded-md hover: opacity-60;
+  }
+
+  .input {
+    @apply w-full px-4 bg-secondary rounded-md disabled:bg-tertiary;
+  }
+
+  .checkbox {
+    @apply text-primary;
   }
 }

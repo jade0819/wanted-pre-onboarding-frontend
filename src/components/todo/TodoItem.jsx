@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import useUserInput from "../../hooks/todo/useUserInput";
 import { useTodo } from "../../context/TodoContext";
+import { FaPen, FaTrash, FaTimes, FaCheck } from "react-icons/fa";
 
 export default function TodoItem({ id, todo, isCompleted }) {
   const [isEditMode, setIsEditMode] = useState(false);
@@ -24,14 +25,15 @@ export default function TodoItem({ id, todo, isCompleted }) {
   };
 
   return (
-    <li className="flex justify-between gap-2 p-2">
+    <li className="flex justify-between gap-6 px-4 py-6 bg-tertiary rounded-xl">
       <input
+        className="w-6 accent-primary opacity-70"
         type="checkbox"
         checked={isCompleted}
         onChange={onChangeCheckBox}
       />
       <input
-        className="flex items-center w-full px-2 border rounded-md"
+        className="input"
         type="text"
         value={userInput}
         onChange={(e) => saveUserInput(e.target)}
@@ -40,33 +42,38 @@ export default function TodoItem({ id, todo, isCompleted }) {
         disabled={!isEditMode}
       />
       {isEditMode || (
-        <div className="flex min-w-[100px]">
+        <div className="flex">
           <button
+            className="btn primary"
             onClick={() => setIsEditMode(true)}
             data-testid="modify-button"
           >
-            수정
+            <FaPen />
           </button>
           <button
-            className="ml-1"
+            className="btn primary ml-1"
             onClick={() => deleteTodo(id)}
             data-testid="delete-button"
           >
-            삭제
+            <FaTrash />
           </button>
         </div>
       )}
       {isEditMode && (
-        <div className="flex flex-1 min-w-[100px]">
-          <button onClick={onSubmit} data-testid="submit-button">
-            제출
+        <div className="flex">
+          <button
+            className="btn primary"
+            onClick={onSubmit}
+            data-testid="submit-button"
+          >
+            <FaCheck />
           </button>
           <button
-            className="ml-1"
+            className="btn primary ml-1"
             onClick={onCancelEdit}
             data-testid="cancel-button"
           >
-            취소
+            <FaTimes />
           </button>
         </div>
       )}

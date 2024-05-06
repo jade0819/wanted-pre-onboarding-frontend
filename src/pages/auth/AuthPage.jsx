@@ -35,16 +35,14 @@ export default function AuthPage() {
   };
 
   return (
-    <div className="w-full max-w-lg">
-      <div className="text-3xl font-semibold text-center mb-6">
-        {pageInfo.title}
-      </div>
-      <form className="p-1" onSubmit={handleSubmit}>
+    <div className="container mt-28">
+      <div className="title">{pageInfo.title}</div>
+      <form className="flex flex-col gap-5 pt-2" onSubmit={handleSubmit}>
         <Inputs email={email} password={password} onChange={saveUserInputs} />
         <div className="flex justify-between items-center">
           <Link to={pageInfo.moveToPathname}>{pageInfo.nameOfPageToMove}</Link>
           <button
-            className="disabled:bg-gray-400"
+            className="btn disabled:opacity-50"
             type="submit"
             disabled={!isValidCheck}
             data-testid={pageInfo.testId}

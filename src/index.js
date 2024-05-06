@@ -12,10 +12,7 @@ import App from "./App";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 const storage = new LocalStorage();
-const httpClient = new HttpClient(
-  "https://www.pre-onboarding-selection-task.store",
-  storage
-);
+const httpClient = new HttpClient(process.env.REACT_APP_API_URL, storage);
 const authService = new AuthService(httpClient, storage);
 const todoService = new TodoService(httpClient);
 

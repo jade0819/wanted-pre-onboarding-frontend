@@ -1,5 +1,3 @@
-import { PATH_NAME } from "../constants/routes";
-
 // AuthService Interface
 // signin(email, password):Promise<void>
 // signup(email, password):Promise<void>

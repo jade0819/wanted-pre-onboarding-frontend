@@ -1,36 +1,29 @@
 import React from "react";
-import { useAuth } from "../../context/AuthContext";
 import AddTodo from "../../components/todo/AddTodo";
-import { useNavigate } from "react-router-dom";
-import { PATH_NAME } from "../../constants/routes";
 import { useTodo } from "../../context/TodoContext";
 import TodoItem from "../../components/todo/TodoItem";
 
 export default function Todos() {
-  const { logout } = useAuth();
   const { todos, isErrorTodos } = useTodo();
-
-  const navigate = useNavigate();
-
-  const onLogout = () => {
-    logout();
-    navigate(PATH_NAME.SIGNIN);
-  };
+  const todosLength = todos.length;
 
   return (
-    <div className="w-full max-w-[600px] justify-center px-1">
-      <div className="text-right mb-1">
-        <button onClick={onLogout}>로그아웃</button>
-      </div>
-      <div className="flex flex-col w-full h-[520px] p-4 bg-white">
+    <>
+      <div className="container">
+        <h1 className="title">Just Do it!</h1>
         <AddTodo />
-        <ul className="h-[430px] mt-3 p-4 border border-black overflow-y-scroll">
-          {isErrorTodos && (
-            <span className="text-red-600">
-              리스트를 가져오는데 실패했습니다.
+        <h3 className="mt-10 font-bold">To do</h3>
+        <ul
+          className={`max-h-todo flex flex-col gap-3 mt-2 overflow-y-auto ${
+            todos.length > 3 ? "pr-3" : "pr-0"
+          }`}
+        >
+          {isErrorTodos ? (
+            <span className="text-center">
+              리스트를 가져오는데 실패하였습니다.
             </span>
-          )}
-          {!(isErrorTodos || todos.length === 0) &&
+          ) : (
+            todosLength > 0 &&
             todos.map((item) => (
               <TodoItem
                 key={item.id}
@@ -38,9 +31,15 @@ export default function Todos() {
                 todo={item.todo}
                 isCompleted={item.isCompleted}
               />
-            ))}
+            ))
+          )}
         </ul>
       </div>
-    </div>
+      <span className="fixed bottom-0 w-full h-12 flex items-center justify-center bg-primary text-base">
+        {todosLength > 0
+          ? `You have ${todosLength} items on your list`
+          : "Ready to go 🚀"}
+      </span>
+    </>
   );
 }

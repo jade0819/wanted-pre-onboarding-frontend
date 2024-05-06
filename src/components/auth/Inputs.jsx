@@ -3,7 +3,7 @@ import React from "react";
 export default function Inputs({ email, password, onChange }) {
   return (
     <>
-      <div className="mb-5">
+      <div>
         <label>이메일</label>
         <input
           className="w-full mt-1 p-3 rounded-md border border-gray-300 outline-none"
@@ -15,7 +15,7 @@ export default function Inputs({ email, password, onChange }) {
           placeholder="이메일은 '@'를 포함해서 입력해주세요."
         />
       </div>
-      <div className="mb-5">
+      <div>
         <label>패스워드</label>
         <input
           className="w-full mt-1 p-3 rounded-md border border-gray-300 outline-none"
