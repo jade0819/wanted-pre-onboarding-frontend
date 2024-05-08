@@ -1,36 +1,45 @@
-import React, { useCallback } from "react";
-import { createTodo } from "../../apis/todoApi";
-import { useAuthContext } from "../../context/AuthContext";
+import React, { useState } from "react";
+import { useTodo } from "../../context/TodoContext";
+import { FaPlus } from "react-icons/fa";
 
-export default function AddTodo({ getTodos }) {
-  const { accessToken: token } = useAuthContext();
+function AddTodo() {
+  const [newTodo, setNewTodo] = useState("");
 
-  const handleSubmit = useCallback(
-    (e) => {
-      e.preventDefault();
+  const saveUserInput = (e) => setNewTodo(e.target.value);
 
-      const value = e.target[0].value;
-      if (!value || value.length <= 0) return;
+  const { createTodo } = useTodo();
 
-      if (!token) throw new Error("Null Token!!");
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-      createTodo(token, value).then(() => getTodos());
-      e.target.reset();
-    },
-    [getTodos, token]
-  );
+    if (!newTodo || newTodo.length <= 0) return;
+
+    createTodo(newTodo);
+    setNewTodo("");
+  };
 
   return (
-    <form className="flex w-full mb-2" onSubmit={handleSubmit}>
+    <form
+      className="w-full flex items-center justify-between pl-6 pr-3 py-1 bg-secondary rounded-[30px]"
+      onSubmit={handleSubmit}
+    >
       <input
-        className="flex-1 mr-1 border rounded-md"
+        className="w-full bg-secondary"
         type="text"
-        placeholder="오늘의 할 일을 작성해보세요."
+        value={newTodo}
+        onChange={saveUserInput}
         data-testid="new-todo-input"
+        placeholder="오늘의 할 일을 작성해보세요"
       />
-      <button type="submit" data-testid="new-todo-add-button">
-        추가
+      <button
+        className="btn text-xl p-0 rounded-full transition duration-500 hover:rotate-90"
+        type="submit"
+        data-testid="new-todo-add-button"
+      >
+        <FaPlus />
       </button>
     </form>
   );
 }
+
+export default AddTodo;

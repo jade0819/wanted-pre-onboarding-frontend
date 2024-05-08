@@ -1,38 +1,45 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { useAuthContext } from "../../context/AuthContext";
-import { getTodos as fetchGetTodos } from "../../apis/todoApi";
-import TodoList from "../../components/todo/TodoList";
+import React from "react";
 import AddTodo from "../../components/todo/AddTodo";
+import { useTodo } from "../../context/TodoContext";
+import TodoItem from "../../components/todo/TodoItem";
 
-export default function Todos() {
-  const [todos, setTodos] = useState([]);
-
-  const { accessToken: token } = useAuthContext();
-
-  const { removeToken } = useAuthContext();
-
-  const getTodos = useCallback(() => {
-    if (token) {
-      fetchGetTodos(token).then((data) => {
-        setTodos(data);
-      });
-    }
-  }, [token]);
-
-  useEffect(() => {
-    getTodos();
-  }, [getTodos]);
+export default function TodoPage() {
+  const { todos, isErrorTodos } = useTodo();
+  const todosLength = todos.length;
 
   return (
-    <div className="w-full max-w-[600px] justify-center px-1">
-      <div className="text-right mb-1">
-        <button onClick={removeToken}>로그아웃</button>
+    <>
+      <div className="container">
+        <h1 className="title">Just Do it!</h1>
+        <AddTodo />
+        <h3 className="mt-10 font-bold">To do</h3>
+        <ul
+          className={`max-h-todo flex flex-col gap-3 mt-2 overflow-y-auto ${
+            todos.length > 3 ? "pr-3" : "pr-0"
+          }`}
+        >
+          {isErrorTodos ? (
+            <span className="text-center">
+              리스트를 가져오는데 실패하였습니다.
+            </span>
+          ) : (
+            todosLength > 0 &&
+            todos.map((item) => (
+              <TodoItem
+                key={item.id}
+                id={item.id}
+                todo={item.todo}
+                isCompleted={item.isCompleted}
+              />
+            ))
+          )}
+        </ul>
       </div>
-
-      <div className="flex flex-col w-full h-[520px] p-4 bg-white">
-        <AddTodo getTodos={getTodos} />
-        <TodoList todos={todos} getTodos={getTodos} />
-      </div>
-    </div>
+      <span className="fixed bottom-0 w-full h-12 flex items-center justify-center bg-primary text-base">
+        {todosLength > 0
+          ? `You have ${todosLength} items on your list`
+          : "Ready to go 🚀"}
+      </span>
+    </>
   );
 }

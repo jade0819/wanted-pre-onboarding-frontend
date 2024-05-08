@@ -1,42 +1,18 @@
-import { createContext, useCallback, useContext } from "react";
-import { useNavigate } from "react-router";
+import { createContext, useContext } from "react";
 
-const ACCESS_TOKEN = "access_token";
+const AuthContext = createContext(null);
 
-const AuthContext = createContext();
+export const useAuth = () => useContext(AuthContext);
 
-export function AuthContextProvider({ children }) {
-  const navigate = useNavigate();
-
-  const accessToken =
-    localStorage.getItem(ACCESS_TOKEN) === ""
-      ? null
-      : localStorage.getItem(ACCESS_TOKEN);
-
-  const setToken = useCallback(
-    (accessToken) => {
-      localStorage.setItem(ACCESS_TOKEN, accessToken);
-      navigate("/todo");
-    },
-    [navigate]
-  );
-
-  const removeToken = useCallback(() => {
-    localStorage.removeItem(ACCESS_TOKEN);
-    navigate("/signin");
-  }, [navigate]);
+export function AuthProvider({ children, authService }) {
+  const signin = authService.signin.bind(authService);
+  const signup = authService.signup.bind(authService);
+  const logout = authService.logout.bind(authService);
+  const isLogin = authService.isLogin.bind(authService);
 
   return (
-    <AuthContext.Provider value={{ accessToken, setToken, removeToken }}>
+    <AuthContext.Provider value={{ signin, signup, logout, isLogin }}>
       {children}
     </AuthContext.Provider>
   );
-}
-
-export function useAuthContext() {
-  const context = useContext(AuthContext);
-  if (context === undefined)
-    throw new Error("useAuthContext should be used within AuthProvider!");
-
-  return context;
 }

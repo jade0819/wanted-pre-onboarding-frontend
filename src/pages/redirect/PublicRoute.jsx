@@ -1,11 +1,12 @@
 import React from "react";
-import { useAuthContext } from "../../context/AuthContext";
+import { useAuth } from "../../context/AuthContext";
 import { Navigate, Outlet } from "react-router";
+import { PATH_NAME } from "../../constants/routes";
 
 export default function PublicRoute() {
-  const { accessToken } = useAuthContext();
+  const { isLogin } = useAuth();
 
-  if (accessToken !== null) return <Navigate to="/todo" />;
+  if (isLogin()) return <Navigate to={PATH_NAME.TODOS} />;
 
   return <Outlet />;
 }
