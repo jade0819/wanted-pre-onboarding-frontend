@@ -41,11 +41,11 @@
 
 ### 로그인/회원가입
 
-![auth](https://github.com/jade0819/wanted-pre-onboarding-frontend/assets/88275787/1cd5f676-a76d-4354-bbd8-6af377facd6c)
+![auth](https://github.com/jade0819/wanted-pre-onboarding-frontend/assets/88275787/4e916253-0dcd-4114-b847-acf2ab9c04bb)
 
 ### TODO LIST
 
-![todo](https://github.com/jade0819/wanted-pre-onboarding-frontend/assets/88275787/36bb9e8e-f034-45ce-bdd5-0566098eb8bb)
+![todos](https://github.com/jade0819/wanted-pre-onboarding-frontend/assets/88275787/523bf0e0-fb66-443b-8afc-2b23f6eba578)
 
 <br />
 
