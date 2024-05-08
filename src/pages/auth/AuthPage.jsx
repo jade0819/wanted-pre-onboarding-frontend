@@ -28,9 +28,11 @@ export default function AuthPage() {
         .catch(() => alert(msg));
     } else {
       signup(email, password, navigate)
-        .then(() => navigate(PATH_NAME.SIGNIN))
+        .then(() => {
+          alert("회원가입이 완료 되었습니다!");
+          navigate(PATH_NAME.SIGNIN);
+        })
         .catch(() => alert(msg));
-      alert("회원가입 완료!");
     }
   };
 

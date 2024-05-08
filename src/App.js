@@ -1,7 +1,6 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { TodoProvider } from "./context/TodoContext";
-import withProvider from "./hocs/withProvider";
 import Layout from "./components/layout/Layout";
 import PublicRoute from "./pages/redirect/PublicRoute";
 import PrivateRoute from "./pages/redirect/PrivateRoute";
@@ -13,12 +12,6 @@ import { PATH_NAME } from "./constants/routes";
 export default function App({ todoService }) {
   const { SIGNIN, SIGNUP, TODOS } = PATH_NAME;
 
-  const TodoPageWithTodoProvider = withProvider(
-    TodoProvider,
-    { todoService: todoService },
-    TodoPage
-  );
-
   return (
     <Layout>
       <div className="w-full h-full">
@@ -29,7 +22,9 @@ export default function App({ todoService }) {
           </Route>
           <Route element={<PrivateRoute />}>
             <Route path="/" element={<Navigate replace to={TODOS} />} />
-            <Route path={TODOS} element={<TodoPageWithTodoProvider />} />
+            <Route element={<TodoProvider todoService={todoService} />}>
+              <Route path={TODOS} element={<TodoPage />} />
+            </Route>
           </Route>
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

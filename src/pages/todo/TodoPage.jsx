@@ -3,7 +3,7 @@ import AddTodo from "../../components/todo/AddTodo";
 import { useTodo } from "../../context/TodoContext";
 import TodoItem from "../../components/todo/TodoItem";
 
-export default function Todos() {
+export default function TodoPage() {
   const { todos, isErrorTodos } = useTodo();
   const todosLength = todos.length;
 

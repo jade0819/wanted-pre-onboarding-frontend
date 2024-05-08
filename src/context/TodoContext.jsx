@@ -5,12 +5,13 @@ import {
   useEffect,
   useState,
 } from "react";
+import { Outlet } from "react-router-dom";
 
 const TodoContext = createContext(null);
 
 export const useTodo = () => useContext(TodoContext);
 
-export function TodoProvider({ children, todoService }) {
+export function TodoProvider({ todoService }) {
   const [todos, setTodos] = useState([]);
   const [error, setError] = useState(false);
 
@@ -67,7 +68,7 @@ export function TodoProvider({ children, todoService }) {
     <TodoContext.Provider
       value={{ todos, isErrorTodos: error, createTodo, updateTodo, deleteTodo }}
     >
-      {children}
+      <Outlet />
     </TodoContext.Provider>
   );
 }
