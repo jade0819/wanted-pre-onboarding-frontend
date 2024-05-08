@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 const regexFor = {
   email: /@/,
@@ -22,7 +22,11 @@ const useUserInputs = () => {
     setUserInputs((prev) => ({ ...prev, [name]: value }));
   };
 
-  return { userInputs, isValidCheck, saveUserInputs };
+  const initUserInputs = useCallback(() => {
+    setUserInputs({ email: "", password: "" });
+  }, []);
+
+  return { userInputs, isValidCheck, saveUserInputs, initUserInputs };
 };
 
 export default useUserInputs;

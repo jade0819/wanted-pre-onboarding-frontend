@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import useUserInputs from "../../hooks/auth/useUserInputs";
@@ -7,14 +7,20 @@ import { PATH_NAME } from "../../constants/routes";
 import { getAuthPageInfoForPathname } from "../../utils/authUtil";
 
 export default function AuthPage() {
-  const { pathname } = useLocation();
+  const { pathname, key } = useLocation();
 
-  const { userInputs, isValidCheck, saveUserInputs } = useUserInputs();
+  const { userInputs, isValidCheck, saveUserInputs, initUserInputs } =
+    useUserInputs();
   const { email, password } = userInputs;
+
+  useEffect(() => {
+    initUserInputs();
+  }, [key, initUserInputs]);
 
   const { signin, signup } = useAuth();
 
   const navigate = useNavigate();
+
   const pageInfo = getAuthPageInfoForPathname(pathname);
 
   const handleSubmit = (e) => {
