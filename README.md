@@ -4,9 +4,17 @@
 
 ## 🚀 목표
 
-#### 로그인 및 회원가입, TODO LIST 기능 구현
+**인턴십에서 학습한 내용을 바탕으로 기존 코드 리팩토링 하기**
 
-[선발과제 안내 바로가기](https://github.com/walking-sunset/selection-task)
+- 로그인 및 회원가입, TODO LIST 기능 구현
+
+- 기존 코드는 `before` 브랜치에서 확인하실 수 있습니다.
+
+  [before 브랜치 바로가기](https://github.com/jade0819/wanted-pre-onboarding-frontend/tree/before?tab=readme-ov-file)
+
+- `선발 과제` 상세 내용은 아래 링크에서 확인하실 수 있습니다.
+
+  [선발과제 안내 바로가기](https://github.com/walking-sunset/selection-task)
 
 <br />
 
