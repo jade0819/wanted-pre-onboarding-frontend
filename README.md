@@ -18,7 +18,7 @@
 
 ## 🔗 프로젝트 배포 링크
 
-**배포 링크**: [https://stunning-bienenstitch-bc1419.netlify.app/](https://stunning-bienenstitch-bc1419.netlify.app/)
+**배포 링크**: [https://pre-onboarding-12th-week1.netlify.app/signin](https://pre-onboarding-12th-week1.netlify.app/signin)
 
 <br />
 
@@ -220,22 +220,50 @@
 
 ```
 
---📁 src
----📁 apis # 통신 관련 폴더
-├── authApi
-  └── todoApi
----📁 components # 컴포넌트 폴더
-├── auth
-  └── todo
----📁 context # context API 폴더
-└── auth
----📁 hooks # custom hook을 담은 폴더
----📁 pages # 페이지 컴포넌트 폴더
-├── notfound
-├── redirect
-├── signin
-├── signup
-  └── todo
----📁 util # 공통 함수 등 유틸 파일을 담은 폴더
+📦
+├─ 📁src
+│  ├─ App.js
+│  ├─ 📁components
+│  │  ├─ 📁auth
+│  │  │  └─ Inputs.jsx
+│  │  ├─ 📁layout
+│  │  │  └─ Layout.jsx
+│  │  └─ 📁todo
+│  │     ├─ AddTodo.jsx
+│  │     └─ TodoItem.jsx
+│  ├─ 📁constants
+│  │  └─ routes.js
+│  ├─ 📁context
+│  │  ├─ AuthContext.jsx
+│  │  └─ TodoContext.jsx
+│  ├─ 📁hocs
+│  │  └─ withProvider.js
+│  ├─ 📁hooks
+│  │  ├─ 📁auth
+│  │  │  └─ useUserInputs.jsx
+│  │  └─ 📁todo
+│  │     └─ useUserInput.jsx
+│  ├─ 📁httpClient
+│  │  └─ httpClient.js
+│  ├─ index.css
+│  ├─ index.js
+│  ├─ 📁pages
+│  │  ├─ 📁auth
+│  │  │  └─ AuthPage.jsx
+│  │  ├─ 📁notfound
+│  │  │  └─ NotFoundPage.jsx
+│  │  ├─ 📁redirect
+│  │  │  ├─ PrivateRoute.jsx
+│  │  │  └─ PublicRoute.jsx
+│  │  └─ 📁todo
+│  │     └─ TodoPage.jsx
+│  ├─ 📁service
+│  │  ├─ AuthService.js
+│  │  └─ TodoService.js
+│  ├─ 📁storage
+│  │  └─ localStorage.js
+│  └─ 📁utils
+│     └─ authUtil.js
+└─ tailwind.config.js
 
 ```
